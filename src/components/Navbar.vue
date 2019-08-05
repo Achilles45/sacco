@@ -75,7 +75,7 @@ export default {
         color: #fff;
         top: 12.899%;
         width: 100%;
-        height: 74vh;
+        height: 80vh;
         display: none !important;
         transition: all ease-in .5s;
             .nav-link{
