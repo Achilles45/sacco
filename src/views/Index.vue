@@ -192,7 +192,7 @@ export default {
 @media only screen and (max-width: 960px){
   .carousel-caption{
   position: absolute;
-  top:20%;
+  top:10%;
   h2{
     font-weight: 800;
     font-size: 2.2rem;
