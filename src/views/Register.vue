@@ -78,7 +78,7 @@
                                 <button @click.prevent="register()" type="submit" class="register-btn btn-block">Register&nbsp; <i class="fa fa-long-arrow-right"></i></button>
                                 <div class="row text-center">
                                    <div class="col-12 text-center">
-                                        <p class="pt-5">Already have an account? <router-link to="/login" class="login-link">Login</router-link></p>
+                                        <small class="pt-5">Already have an account? <router-link to="/login" class="login-link">Login</router-link></small>
                                     <small>By clicking on Sign Up, you agree to our <router-link to="/terms">terms and conditions</router-link> and <router-link to="/policies"> privacy policies</router-link></small>
                                    </div>
                                 </div>
@@ -128,6 +128,9 @@ export default {
                 this.feedback = 'Please, fill in all fields!'
                 this.clearAlerts();
             }
+        },
+        register: function(){
+            alert('Thank you! Registration is sucessful');
         }
     }
 }
