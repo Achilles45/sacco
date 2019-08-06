@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from './views/Index.vue'
 import Register from './views/Register.vue'
 import Login from './views/Login.vue';
+import ResetPassword from './views/ResetPassword.vue';
 Vue.use(Router)
 
 export default new Router({
@@ -31,6 +32,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/reset-password',
+      name: 'ResetPassword',
+      component: ResetPassword
     },
   ]
 })
