@@ -7,11 +7,11 @@
             <div class="navbar__items">
                 <ul class="navbar__links d-flex justify-content-between align-items-center">
                     <li><router-link to="/" class="nav-link">Home</router-link></li>
-                    <li><router-link to="/" class="nav-link">Loan Calculator</router-link></li>
-                    <li><router-link to="/" class="nav-link">Currency Exchange</router-link></li>
-                    <li><router-link to="/" class="nav-link">Contact</router-link></li>
-                    <li><router-link to="/" class="nav-link register">Register</router-link></li>
-                    <li><router-link to="/" class="nav-link login">Login</router-link></li>
+                    <li><router-link to="/loan-calculator" class="nav-link">Loan Calculator</router-link></li>
+                    <li><router-link to="/currency-exchange" class="nav-link">Currency Exchange</router-link></li>
+                    <li><router-link to="/contact" class="nav-link">Contact</router-link></li>
+                    <li><router-link to="/register" class="nav-link register">Register</router-link></li>
+                    <li><router-link to="/login" class="nav-link login">Login</router-link></li>
                 </ul>
             </div>
             <div @click="openNav()" class="navbar__toggler">
@@ -39,7 +39,9 @@ export default {
 <style scoped lang="scss">
 @import '../styles/_colors.scss';
 .navbar__wrapper{
+    box-shadow: 0px 0px 2px rgba(0,0,0,.16);
     .navbar__contents{
+        padding: .2rem 0;
         .navbar__brand{
             .logo{
                 height: 70px;
@@ -48,7 +50,7 @@ export default {
         .navbar__items{
             .navbar__links{
                 .nav-link{
-                    color: #3d3d3d;
+                    color: #828282;
                     padding-top: 1.1rem;
                     font-size: .9rem;
                     text-transform: initial;
