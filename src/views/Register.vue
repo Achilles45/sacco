@@ -33,9 +33,9 @@
                                     <input type="password" placeholder="Password" class="form-control" v-model="password" >
                                 </div>
                                 <button @click.prevent="toggleForm()" type="submit" class="register-btn btn-block">Next&nbsp; <i class="fa fa-long-arrow-right"></i></button>
-                                <div class="row text-center">
+                                <div class="row mt-3 text-center">
                                    <div class="col-12 text-center">
-                                        <p class="pt-5">Already have an account? <router-link to="/login" class="login-link">Login</router-link></p>
+                                        <small class="pt-5">Already have an account? <router-link to="/login" class="login-link">Login</router-link></small><br />
                                     <small>By clicking on Sign Up, you agree to our <router-link to="/terms">terms and conditions</router-link> and <router-link to="/policies"> privacy policies</router-link></small>
                                    </div>
                                 </div>
@@ -76,9 +76,9 @@
                                     <input type="tel" placeholder="Account Number" class="form-control" v-model="accNumber" >
                                 </div>
                                 <button @click.prevent="register()" type="submit" class="register-btn btn-block">Register&nbsp; <i class="fa fa-long-arrow-right"></i></button>
-                                <div class="row text-center">
+                                <div class="row mt-3 text-center">
                                    <div class="col-12 text-center">
-                                        <small class="pt-5">Already have an account? <router-link to="/login" class="login-link">Login</router-link></small>
+                                        <small class="pt-5">Already have an account? <router-link to="/login" class="login-link">Login</router-link></small><br />
                                     <small>By clicking on Sign Up, you agree to our <router-link to="/terms">terms and conditions</router-link> and <router-link to="/policies"> privacy policies</router-link></small>
                                    </div>
                                 </div>
@@ -143,7 +143,7 @@ export default {
         box-shadow: 0px 0px 1px 1px rgba(0,0,0,.16);
         padding: 3rem 2.8rem;
         margin-top: 3.5rem;
-        border-radius: 3px;
+        border-radius: 4px;
         h4{
             color: #1a1a1a;
         }
