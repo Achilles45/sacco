@@ -14,7 +14,7 @@
                    </div>
                </div>
                <div class="col-md-1"></div>
-               <div class="col-md-5 text-light">
+               <div class="col-md-5 text-light mt-5">
                    <h6><i class="fa fa-check-square register-icons"></i>&nbsp;&nbsp; Register</h6>
                    <p>Registtarion is very simple and can be completed in few clicks. Admin can also help you to register if you want to.</p><br />
                    <h6><i class="fa fa-certificate register-icons"></i>&nbsp;&nbsp; Get verified</h6>

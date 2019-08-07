@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="row mt-5 pb-3">
                 <div class="col-md-4">
-                    <h4 class="mt-4">Welcome, Achilles</h4>
+                    <h4 class="mt-4">Welcome!</h4>
                     <div class="dashboard__top__nav d-flex justify-content-between mt-5">
                           <a href="" class="dashboard-links" @click.prevent="showOverview()">Overview</a>
                            <a href="" class="dashboard-links" @click.prevent="showProfile()">Profile</a>

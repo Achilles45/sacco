@@ -10,16 +10,16 @@
                             <p>It's super fast and easy!</p>
                             <small>Your personal details</small>
                             <form>
-                                   <div v-if="feedback" class="alert alert-danger">{{ feedback }}</div>
+                                   <div v-if="feedback" class="alert alert-danger" style="font-size:.8rem">{{ feedback }}</div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" placeholder="First Name" class="form-control" v-model="fname">
+                                            <input type="text" placeholder="First Name" class="form-control" id="fname" v-model="fname">
                                         </div>
                                     </div>
                                      <div class="col-md-6">
                                          <div class="form-group">
-                                            <input type="text" placeholder="Last Name" class="form-control" v-model="lname">
+                                            <input type="text" placeholder="Last Name" class="form-control" id="lname" v-model="lname">
                                         </div>
                                     </div>
                                 </div>
@@ -27,10 +27,11 @@
                                     <input type="email" placeholder="Email" class="form-control" v-model="email" required />
                                 </div>
                                  <div class="form-group">
-                                    <input type="tel" placeholder="Mobile Number" class="form-control" v-model="phone" >
+                                    <input type="tel" placeholder="Mobile Number" class="form-control" v-model="phone" required>
                                 </div>
                                  <div class="form-group">
                                     <input type="password" placeholder="Password" class="form-control" v-model="password" >
+                                    <small class="text-muted">Your password must be atleast 6 characters long!</small>
                                 </div>
                                 <button @click.prevent="toggleForm()" type="submit" class="register-btn btn-block">Next&nbsp; <i class="fa fa-long-arrow-right"></i></button>
                                 <div class="row mt-3 text-center">
@@ -58,6 +59,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <input type="text" placeholder="Username" class="form-control" v-model="userName">
+                                            <small class="text-danger">You can't use Admin as username!</small>
                                         </div>
                                     </div>
                                      <div class="col-md-6">
@@ -70,7 +72,7 @@
                                     <input type="text" placeholder="Gender" class="form-control" v-model="gender" >
                                 </div>
                                  <div class="form-group">
-                                    <input type="text" placeholder="Account Name" class="form-control" v-model="bankName" >
+                                    <input type="text" placeholder="Bank Name" class="form-control" v-model="bankName" >
                                 </div>
                                  <div class="form-group">
                                     <input type="tel" placeholder="Account Number" class="form-control" v-model="accNumber" >
@@ -93,6 +95,9 @@
 <script>
 import Navbar from "@/components/Navbar.vue";
 import { setTimeout } from 'timers';
+import db from "@/firebase/init";
+import firebase from "firebase";
+
 export default {
     name: 'Register',
     components:{
@@ -124,13 +129,47 @@ export default {
         toggleForm: function(){
             if(this.fname && this.lname && this.email && this.phone && this.password){
                   this.contactForm = !this.contactForm
+                  
             }else{
                 this.feedback = 'Please, fill in all fields!'
                 this.clearAlerts();
             }
         },
         register: function(){
-            alert('Thank you! Registration is sucessful');
+            //Checking to make sure all fields has been properly filled out
+             if(this.fname && this.lname && this.email && this.phone && this.password){
+                  this.contactForm = !this.contactForm
+                  //Check if a username already exists 
+                  let ref = db.collection('members').doc(this.userName);
+                  ref.get().then(doc=>{
+                      if (doc.exists) {
+                          this.feedback = "Username taken or you can't be an admin. Please refresh your browser and try again!";
+                      }else{
+                          firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+                          .then(cred=>{
+                              ref.set({
+                                  First_Name: this.fname,
+                                  Last_Name: this.lname,
+                                  Email: this.email,
+                                  Mobile_Number: this.phone,
+                                  User_Name: this.userName,
+                                  Occupation: this.occupation,
+                                  Bank_Name: this.bankName,
+                                  Account_Number: this.accNumber
+                              })
+                          })
+                          .then(()=>{
+                              alert('Registration was successful')
+                              this.$router.push('/dashboard');
+                          })
+                          .catch(err=>{
+                              this.feedback = err.message;
+                          })
+                      }
+                  })
+            }else{
+                alert('Registration is successful')
+            }
         }
     }
 }

@@ -59,7 +59,7 @@ export default {
             font-weight: 300;
         }
         p{
-            font-size: .9rem;
+            font-size: .89rem;
             line-height: 1.7;
         }
     }

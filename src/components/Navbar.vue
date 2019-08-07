@@ -9,7 +9,6 @@
                     <li><router-link to="/" class="nav-link">Home</router-link></li>
                     <li><router-link to="/loan-calculator" class="nav-link">Loan Calculator</router-link></li>
                     <li><router-link to="/currency-exchange" class="nav-link">Currency Exchange</router-link></li>
-                    <li><router-link to="/contact" class="nav-link">Contact</router-link></li>
                     <li><router-link to="/register" class="nav-link register">Register</router-link></li>
                     <li><router-link to="/login" class="nav-link login">Login</router-link></li>
                 </ul>
