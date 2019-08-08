@@ -95,7 +95,7 @@ export default {
         background: $secondary-color;
         padding: 5rem 0;
         color: #fff;
-        top: 10.899%;
+        top: 12.899%;
         width: 100%;
         height: 93vh;
         display: none !important;
