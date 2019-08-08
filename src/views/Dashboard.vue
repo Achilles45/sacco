@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="row mt-5 pb-3">
                 <div class="col-md-4">
-                    <h4 class="mt-4">Welcome!</h4>
+                    <h4 class="mt-4">Welcome </h4>
                     <div class="dashboard__top__nav d-flex justify-content-between mt-5">
                           <a href="" class="dashboard-links" @click.prevent="showOverview()">Overview</a>
                            <a href="" class="dashboard-links" @click.prevent="showProfile()">Profile</a>
@@ -21,11 +21,11 @@
                     <div class="col-md-7 overview__contents">
                         <div class="overview__content savings">
                             <h6><i class="fa fa-money"></i>&nbsp;&nbsp; Total Saving</h6>
-                            <p>&#8358; 20,200</p>
+                            <p>&#8358; 00.00</p>
                         </div>
                          <div class="overview__content users">
                             <h6><i class="fa fa-users"></i>&nbsp;&nbsp; Total Members</h6>
-                            <p>200</p>
+                            <p>00</p>
                         </div>
                          <div class="overview__content loans">
                             <h6><i class="fa fa-money"></i>&nbsp;&nbsp; Outstanding Loans</h6>
@@ -135,7 +135,7 @@ export default {
     },
     data(){
         return{
-            
+            user: null
         }
     },
     methods:{
@@ -155,7 +155,8 @@ export default {
     },
     mounted(){
         this.showOverview();
-    }
+    },
+    
 }
 </script>
 <style lang="scss" scoped>

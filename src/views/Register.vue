@@ -54,7 +54,7 @@
                         <div class="form__wrapper">
                             <h4>Contact & Bank Details</h4>
                             <small>Please make sure all contact details are correct as you will verified with them</small>
-                            <form>
+                            <form @submit="register()" >
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -77,7 +77,7 @@
                                  <div class="form-group">
                                     <input type="tel" placeholder="Account Number" class="form-control" v-model="accNumber" >
                                 </div>
-                                <button @click.prevent="register()" type="submit" class="register-btn btn-block">Register&nbsp; <i class="fa fa-long-arrow-right"></i></button>
+                                <button type="submit" class="register-btn btn-block">Register&nbsp; <i class="fa fa-long-arrow-right"></i></button>
                                 <div class="row mt-3 text-center">
                                    <div class="col-12 text-center">
                                         <small class="pt-5">Already have an account? <router-link to="/login" class="login-link">Login</router-link></small><br />
@@ -116,7 +116,8 @@ export default {
             bankName: null,
             accNumber: null,
             contactForm: true,
-            feedback:null
+            feedback:null,
+            User_id: null,
         }
     },
     methods:{
@@ -155,12 +156,12 @@ export default {
                                   User_Name: this.userName,
                                   Occupation: this.occupation,
                                   Bank_Name: this.bankName,
-                                  Account_Number: this.accNumber
+                                  Account_Number: this.accNumber,
+                                  User_id: cred.user.uid
                               })
                           })
                           .then(()=>{
-                              alert('Registration was successful')
-                              this.$router.push('/dashboard');
+                              this.$router.push('/login');
                           })
                           .catch(err=>{
                               this.feedback = err.message;

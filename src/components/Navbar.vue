@@ -6,11 +6,13 @@
             </div>
             <div class="navbar__items">
                 <ul class="navbar__links d-flex justify-content-between align-items-center">
-                    <li><router-link to="/" class="nav-link">Home</router-link></li>
-                    <li><router-link to="/loan-calculator" class="nav-link">Loan Calculator</router-link></li>
-                    <li><router-link to="/currency-exchange" class="nav-link">Currency Exchange</router-link></li>
-                    <li><router-link to="/register" class="nav-link register">Register</router-link></li>
-                    <li><router-link to="/login" class="nav-link login">Login</router-link></li>
+                    <li v-if="!user"><router-link to="/" class="nav-link">Home</router-link></li>
+                    <li v-if="!user"><router-link to="/loan-calculator" class="nav-link">Loan Calculator</router-link></li>
+                    <li v-if="!user"><router-link to="/currency-exchange" class="nav-link">Currency Exchange</router-link></li>
+                    <li v-if="!user"><router-link to="/register" class="nav-link register">Register</router-link></li>
+                    <li v-if="!user"><router-link to="/login" class="nav-link login">Login</router-link></li>
+                    <li v-if="user"><a class="nav-link">{{ user.email }}</a></li>
+                    <li v-if="user" @click="logOut()"><router-link to="/login" class="nav-link login">Logout</router-link></li>
                 </ul>
             </div>
             <div @click="openNav()" class="navbar__toggler">
@@ -20,18 +22,37 @@
     </div>
 </template>
 <script>
+import firebase from 'firebase';
 export default {
     name: 'Navbar',
     data(){
         return{
-
+            user: null
         }
     },
     methods:{
         openNav: function(){
             const nav = document.querySelector('.navbar__links');
             nav.classList.toggle('show-nav');
+        },
+        //Function to log out
+        logOut: function(){
+            firebase.auth().signOut()
+            .then(()=>{
+                this.$router.push('/')
+            })
         }
+    },
+    created(){
+        //Check if a user is login so we can conditionally hide some nav links
+        // let user = firebase.auth().currentUser
+        firebase.auth().onAuthStateChanged((user=>{
+            if(user){
+                this.user = user
+            }else{
+                this.user = null
+            }
+        }))
     }
 }
 </script>
@@ -74,7 +95,7 @@ export default {
         background: $secondary-color;
         padding: 5rem 0;
         color: #fff;
-        top: 12.899%;
+        top: 10.899%;
         width: 100%;
         height: 93vh;
         display: none !important;
