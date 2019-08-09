@@ -5,6 +5,8 @@ import Register from './views/Register.vue'
 import Login from './views/Login.vue';
 import ResetPassword from './views/ResetPassword.vue';
 import Dashboard from './views/Dashboard.vue';
+import Admin from './views/Admin.vue';
+
 Vue.use(Router)
 
 export default new Router({
@@ -43,6 +45,11 @@ export default new Router({
       path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: Admin
     },
   ]
 })
