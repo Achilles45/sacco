@@ -7,8 +7,6 @@
             <div class="navbar__items">
                 <ul class="navbar__links d-flex justify-content-between align-items-center">
                     <li v-if="!user"><router-link to="/" class="nav-link">Home</router-link></li>
-                    <li v-if="!user"><router-link to="/loan-calculator" class="nav-link">Loan Calculator</router-link></li>
-                    <li v-if="!user"><router-link to="/currency-exchange" class="nav-link">Currency Exchange</router-link></li>
                     <li v-if="!user"><router-link to="/register" class="nav-link register">Register</router-link></li>
                     <li v-if="!user"><router-link to="/login" class="nav-link login">Login</router-link></li>
                     <li v-if="user"><a class="nav-link">{{ user.email }}</a></li>
